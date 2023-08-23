@@ -27,6 +27,12 @@ pipeline{
             }
         }
 
+        stage('Echo Public IP'){
+            steps{
+                sh "echo '$PUBLICIP'"
+            }
+        }
+
     }
 }
 
