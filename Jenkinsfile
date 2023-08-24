@@ -6,6 +6,9 @@ pipeline{
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '2')
     }
 
+    environment {
+        PUBLIC_IP = "" // Initialize the environment variable
+    }
 
     stages{
         stage('Checkout the code'){
@@ -16,7 +19,11 @@ pipeline{
 
         stage('Creating K8s Server'){
             steps{
-                sh "sh aws_create.sh"
+                script {
+                    // Run a shell script and capture its output
+                    env.PUBLIC_IP = sh(script: 'aws_create.sh', returnStdout: true).trim()
+                    echo "Script output: ${env.PUBLIC_IP}"
+                }
             }
         }
     }
