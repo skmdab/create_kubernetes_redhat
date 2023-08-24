@@ -20,9 +20,8 @@ pipeline{
         stage('Creating K8s Server'){
             steps{
                 script {
-                    sh "pwd"
                     // Run a shell script and capture its output
-                    env.PUBLIC_IP = sh(script: '/root/.jenkins/workspace/k8s/aws_create.sh', returnStdout: true).trim()
+                    env.PUBLIC_IP = sh(script: '/root/.jenkins/workspace/k8s/aws_create.sh', returnStdout: true
                     echo "Script output: ${env.PUBLIC_IP}"
                 }
             }
