@@ -21,7 +21,7 @@ pipeline{
             steps{
                 script {
                     // Run a shell script and capture its output
-                    env.PUBLIC_IP = sh(script: 'aws_create.sh', returnStdout: true).trim()
+                    env.PUBLIC_IP = sh(script: '/root/.jenkins/workspace/k8s/aws_create.sh', returnStdout: true).trim()
                     echo "Script output: ${env.PUBLIC_IP}"
                 }
             }
