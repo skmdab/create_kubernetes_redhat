@@ -22,7 +22,6 @@ pipeline{
                 script {
                     // Run a shell script and capture its output
                     def PUBLIC_IP = sh(script: '/root/.jenkins/workspace/k8s/aws_create.sh', returnStatus: true).trim()
-                    echo "Script output: ${env.PUBLIC_IP}"
                 }
             }
         }
