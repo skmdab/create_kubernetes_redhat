@@ -21,7 +21,8 @@ pipeline{
             steps{
                 script {
                     // Run a shell script and capture its output
-                    def PUBLIC_IP = sh(script: '/root/.jenkins/workspace/k8s/aws_create.sh', returnStatus: true).trim()
+                    def PUBLIC_IP = sh(script: '/root/.jenkins/workspace/k8s/aws_create.sh', returnStatus: true)
+                    echo "Script output: ${scriptOutput}"
                 }
             }
         }
