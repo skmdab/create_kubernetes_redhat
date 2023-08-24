@@ -18,14 +18,6 @@ pipeline{
             steps{
                 sh "sh aws_create.sh"
             }
-        }
-
-        stage('Getting Public IP of Created Instance'){
-            steps{
-                sh "PUBLICIP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=master" --query "Reservations[0].Instances[0].PublicIpAddress" --output text)"
-
-            }
-        }
 
         stage('Echo Public IP'){
             steps{
