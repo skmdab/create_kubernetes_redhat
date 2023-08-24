@@ -29,8 +29,8 @@ pipeline{
 
         stage('Coping script to remote'){
             steps{
+                environment.PUBLIC_IP = PUBLIC_IP
                 withCredentials([file(credentialsId: 'pemfile', variable: 'PEMFILE')]) {
-                      environment.PUBLIC_IP = PUBLIC_IP
                       sh "scp -i $PEMFILE /root/.jenkins/workspace/k8s/k8s.sh ec2-user@${PUBLIC_IP}:"
 		            }
                 }
