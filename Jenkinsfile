@@ -26,6 +26,15 @@ pipeline{
                 }
             }
         }
+
+        stage('Coping script to remote'){
+            steps{
+                withCredentials([file(credentialsId: 'pemfile', variable: 'PEMFILE')]) {
+		            sh 'scp -i "$PEMFILE" /root/.jenkins/workspace/k8s/k8s.sh ec2-user@${PUBLIC_IP}:'
+		            }
+                }
+            }
+        }
     }
 }
 
