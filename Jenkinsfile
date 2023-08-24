@@ -18,13 +18,7 @@ pipeline{
             steps{
                 sh "sh aws_create.sh"
             }
-
-        stage('Echo Public IP'){
-            steps{
-                sh "echo '$PUBLICIP'"
-            }
         }
-
     }
 }
 
